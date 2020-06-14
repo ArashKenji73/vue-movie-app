@@ -1,0 +1,85 @@
+$headerHeight: 80px;
+$headerBg: $primaryColor;
+
+header{
+  height: $headerHeight;
+  background: $headerBg;
+  .container{
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $generalPadding;
+    color: $white;
+    nav{
+      @extend navbar
+    }
+
+    .login-register{
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 12px;
+      width: 152px;
+      border-radius: 8px;
+      background: lighten($headerBg, 10);
+      font-family: Exo-Regular;
+    }
+  }
+}
+
+
+
+navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* min-width: 300px; */
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    margin: 0 auto;
+    min-width: 300px;
+    width: 316px;
+    max-width: 450px;
+
+    .router-link-exact-active{
+        position: relative;
+        &::after{
+          position: absolute;
+          content: "";
+          bottom: 6px;
+          width: 62%;
+          height: 2px;
+          background: white;
+          left: 0px;
+          right: 0px;
+          border-radius: 28px;
+          margin: 0px auto;
+        }
+    }
+    li{
+      cursor: pointer;
+      padding: 12px 18px;
+      a{
+        transition: all 0.3s;
+        text-transform:capitalize;
+        font-family: Exo-SemiBold;
+        color: $white;
+        transition: all 0.3s;
+      }
+
+      &:hover{
+        &::after{
+          background: $secondaryColor;
+        }
+        a{
+          color: $secondaryColor;
+        }
+      }
+      
+    }
+
+  //background: red;
+}

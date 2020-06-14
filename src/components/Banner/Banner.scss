@@ -1,0 +1,44 @@
+#banner{
+    padding: $paddingUnit;
+    height: 705px;
+    
+
+    .banner-content{
+        display: flex;
+        height: 100%;
+
+        .main-banner{
+            position: relative;
+            width: calc(100% / 1.618);
+            margin-right: ($paddingUnit/2);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: none;
+        }
+
+        .side-banner{
+            margin-left: ($paddingUnit/2);
+            flex-grow: 1;
+            @extend sideBanner;
+        }
+
+    }
+}
+
+
+sideBanner{
+    display: flex;
+    flex-direction: column;
+    .side-banner-item{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background: none;
+        flex-grow: 1;
+        &:first-child{
+            margin-bottom: $paddingUnit;
+        }
+    }
+}

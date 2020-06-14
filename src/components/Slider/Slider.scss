@@ -1,0 +1,14 @@
+
+.slider{
+    padding: $paddingUnit;
+}
+
+.carousel-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 25%;
+    height: 300px;
+    margin-right: $paddingUnit;
+    border-radius: 16px;
+}

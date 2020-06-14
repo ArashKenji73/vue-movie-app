@@ -1,0 +1,107 @@
+
+
+@import "./00-reset.scss";
+@import "./01-vars.scss";
+@import "./02-mixins.scss";
+
+
+//FONTS
+@font-face {
+    font-family: 'Exo-SemiBold';
+    src: url('~@/fonts/Exo-SemiBold.ttf');
+}
+@font-face {
+    font-family: 'Exo-Regular';
+    src: url('~@/fonts/Exo-Regular.ttf');
+}
+
+//container
+.container{
+    width: 1140px;
+    margin: 0 auto;
+}
+//container
+section{
+    margin-bottom: 62px;
+}
+//sticky
+.sticky{
+    position: sticky;
+    top: 0px;
+    z-index: 9999999999999;
+}
+//radius
+.radius{
+    border-radius: $border-radius;
+}
+//radius
+.shadow{
+    box-shadow: 0px 0px 10px grey;
+}
+
+
+.addToPlayList{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    display: flex;
+    border: 2px solid #fff;
+    padding: 10px;
+    bottom: calc(#{$paddingUnit}/2);
+    right: calc(#{$paddingUnit}/2);
+    transition: all 0.3s;
+    svg{
+      width: 16px;
+      fill: $white;
+    }
+
+    &:hover{
+      background: $white;
+      svg{
+        fill: black;
+      }
+
+    }
+}
+
+.loading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    left: 0;
+    right: 0px;
+    bottom: 0px;
+    img{
+        width: 10%;
+    }
+}
+
+
+perfect-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-title{
+    text-transform: uppercase;
+    font-family: 'Exo-SemiBold';
+    position: relative;
+    font-size: 32px;
+    margin-left: 20px;
+    margin-bottom: $paddingUnit;
+    &::after{
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 6px;
+        left: -20px;
+        background: $secondaryColor;
+        border-radius: 16px;
+    }
+}

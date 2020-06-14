@@ -3,13 +3,10 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+
+import movies from '@/store/modules/movies'
 export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
   modules: {
-  },
+    movies
+  }
 });
