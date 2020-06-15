@@ -2,7 +2,7 @@
 
   <div class="wrapper">
     <div id="banner" v-if="getNowPlayinMovies">
-      <div class="banner-content">
+      <div class="two-row">
         <div class="main-banner radius">
           <singleMovie :movie="getNowPlayinMovies[0]"/>
         </div>

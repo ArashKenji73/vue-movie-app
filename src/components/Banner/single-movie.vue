@@ -1,29 +1,34 @@
 <template>
   <router-link :to="'/movie/'+`${movie.id}`">
+
+
+  <!-- <div class="chips-wrapper">
+    <div class="chip radius" v-for="(genre , i) in genres" :key="i">
+        {{genre.name}}
+    </div>
+  </div> -->
+
+
+    <!-- MOVIE RATE -->
     <div class="movie-rate radius" :class="movieRate">{{movie.vote_average}}</div>
 
-
-    <!-- <div class="movie-pop radius" :class="movieRate">
-      <img src="@/assets/user.svg">
-      {{movie.popularity}}
-
-    </div> -->
-
+    <!-- MOVIE POSTER -->
     <img class="movie-poster radius" :src="baseImageUrl+movie.poster_path" />
 
+    <!-- MOVIE BACKDROP -->
     <img class="movie-poster-backdrop radius" :src="baseImageUrl+movie.poster_path" />
 
+    <!-- MOVIE INFO -->
     <div class="movie-info">
-      <div @click.stop.prevent="addToPlayList(movie.id)" class="addToPlayList radius">
+      <!-- <div @click.stop.prevent="addToPlayList(movie.id)" class="addToPlayList radius">
         <svg viewBox="0 0 68 68" xmlns="http://www.w3.org/2000/svg">
           <path d="M-1 31H68V37H-1V31Z"/>
           <path d="M30.5 68.5L30.5 -0.5L36.5 -0.5V68.5H30.5Z"/>
         </svg>
-      </div>
+      </div> -->
       <h1 class="movie-info-title">{{shortenTitle}}</h1>
       <h3 class="movie-info-release">{{realeseDate}}</h3>
     </div>
-
 
   </router-link>
 </template>
@@ -38,9 +43,15 @@ export default {
   },
   props: ["movie"],
   computed: {
+    ...mapGetters('movies', [
+      'getGenres'
+    ]),
     realeseDate() {
       return this.movie.release_date.slice(0, 4);
     },
+    // genres(){
+    //   return this.getGenres.filter( genres =>  this.movie.genre_ids.includes( genres.id ));
+    // },
 
     shortenTitle(){
       //return this.movie.title.length
@@ -65,10 +76,17 @@ export default {
     // },
   },
   methods:{
+    ...mapActions('movies', [
+      'loadGenres'
+    ]),
     addToPlayList(id){
       console.log('add to playlist triggred : ' + id)
     }
-  }
+  },
+
+  created() {
+    this.loadGenres();
+  },
 };
 </script>
 

@@ -1,8 +1,7 @@
 <template>
   <div class="slider">
   <h1 class="main-title">popular</h1>
-
-  <flickity v-if="getNowPlayinMovies" ref="flickity" :options="flickityOptions" >
+  <flickity v-if="getPopularMovie" ref="flickity" :options="flickityOptions" >
 
     <div class="carousel-cell" v-for="(movie, i) in sliderMovies" :key="i">
       <mainBanner :movie="movie" class="narrow"></mainBanner>
@@ -10,9 +9,6 @@
 
   </flickity>
   <AppLoading v-else></AppLoading>
-  <!-- if you don't want to use the buttons Flickity provides -->
-  <button @click="previous()">Custom Previous Button</button>
-  <button @click="next()">Custom Next Button</button>
   </div>
 </template>
 <script>
@@ -32,9 +28,9 @@ export default {
     return {
       flickityOptions: {
         initialIndex: 0,
-        prevNextButtons: false,
+        prevNextButtons: true,
         pageDots: false,
-        wrapAround: false,
+        wrapAround: true,
         cellAlign: 'left'
         // any options from Flickity can be used
       }
@@ -43,16 +39,16 @@ export default {
 
   computed:{
     ...mapGetters('movies', [
-      'getNowPlayinMovies'
+      'getPopularMovie',
     ]),
     sliderMovies() {
-      return this.getNowPlayinMovies.slice(3,20)
+      return this.getPopularMovie.slice(3,23)
     },
   },
 
   methods: {
     ...mapActions('movies', [
-      'loadLatestMovie'
+      'LoadPopularMovies',
     ]),
 
     next() {
@@ -64,7 +60,7 @@ export default {
     }
   },
   created(){
-    this.loadLatestMovie();
+    this.LoadPopularMovies();
   }
 }
 </script>
