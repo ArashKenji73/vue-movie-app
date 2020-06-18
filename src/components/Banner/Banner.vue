@@ -2,18 +2,20 @@
 
   <div class="wrapper">
     <div id="banner" v-if="getNowPlayinMovies">
-      <div class="two-row">
-        <div class="main-banner radius">
-          <singleMovie :movie="getNowPlayinMovies[0]"/>
-        </div>
-        <div class="side-banner radius">
-          <div class="side-banner-item radius">
-            <singleMovie class="narrow" :movie="getNowPlayinMovies[1]"/>
-          </div>
-          <div class="side-banner-item radius">
-            <singleMovie class="narrow" :movie="getNowPlayinMovies[2]"/>
-          </div>
-        </div>
+      <div class="item main radius">
+        <singleMovie :movie="getNowPlayinMovies[0]" />
+      </div>
+      <div class="item radius">
+        <singleMovie class="narrow" :movie="getNowPlayinMovies[1]" />
+      </div>
+      <div class="item radius">
+        <singleMovie class="narrow" :movie="getNowPlayinMovies[2]" />
+      </div>
+      <div class="item radius">
+        <singleMovie class="narrow" :movie="getNowPlayinMovies[3]" />
+      </div>
+      <div class="item radius">
+        <singleMovie class="narrow" :movie="getNowPlayinMovies[4]" />
       </div>
     </div>
     <AppLoading v-else></AppLoading>

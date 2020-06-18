@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="'/movie/'+`${movie.id}`">
+  <router-link tag="a" class="single-movie" :to="'/movies/movie/'+`${movie.id}`">
 
 
   <!-- <div class="chips-wrapper">
@@ -47,7 +47,10 @@ export default {
       'getGenres'
     ]),
     realeseDate() {
-      return this.movie.release_date.slice(0, 4);
+      if(this.movie != undefined){
+        return this.movie.release_date.slice(0, 4);
+      }
+
     },
     // genres(){
     //   return this.getGenres.filter( genres =>  this.movie.genre_ids.includes( genres.id ));
@@ -55,9 +58,9 @@ export default {
 
     shortenTitle(){
       //return this.movie.title.length
-      if(this.movie.title.length > 12){
+      if(this.movie != 'undefined' && this.movie.title.length > 12){
         return this.movie.title.slice(0, 12)+'...';
-      }else{
+      }else if(this.movie != 'undefined'){
         return this.movie.title
       }
     },

@@ -1,5 +1,6 @@
 <template>
 <div class="col-item radius">
+  <router-link tag="a" class="single-movie-list" :to="'/movies/movie/'+`${movie.id}`"></router-link>
   <!-- IMAGE -->
   <div class="item-image">
     <img :src="baseImageUrl+movie.poster_path" />
@@ -11,6 +12,7 @@
   </div>
   <!--RATE -->
   <span class="item-rate" :class="movieRate">{{movie.vote_average}}</span>
+
 </div>
 </template>
 
@@ -48,6 +50,16 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.single-movie-list{
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
 .col-item{
     position: relative;
     display: flex;

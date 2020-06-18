@@ -1,0 +1,128 @@
+.chips-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 0rem;
+    margin-top: 0.75rem;
+    justify-content: flex-start;
+    color: $white;
+    @media (min-width: 576px) {
+        margin-top: 0rem;
+        margin-left: 1rem;
+    }
+
+    .chip {
+        font-family: Exo-SemiBold;
+        background: #636363;
+        padding: 0.5rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+
+
+.single-movie-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 576px) {
+        flex-direction: row;
+        padding: calc(#{$paddingUnit}/2);
+    }
+
+    .movie-poster-backdrop {
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(10%);
+        z-index: -1;
+    }
+
+    .movie-poster {
+        position: relative;
+        width: 100%;
+        height: 424px;
+
+        @media (min-width: 576px) {
+            width: 400px;
+        }
+
+        img {
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .movie-info {
+        flex-grow: 1;
+        margin-left: 0px;
+        padding: $paddingUnit;
+        @media (min-width: 576px) {
+            margin-left: $paddingUnit;
+            padding: 0px;
+        }
+        //background: blue;
+        .title {
+            font-family: Exo-SemiBold;
+            font-size: 48px;
+            color: $white;
+        }
+
+        .subtitle {
+            font-family: Exo-Regular;
+            color: $white;
+        }
+
+        .runtime {
+            font-family: Exo-Regular;
+            display: flex;
+            //justify-content: space-around;
+            align-items: center;
+            min-width: 140px;
+            width: 162px;
+            color: $white;
+            margin-bottom: 3rem;
+
+            img {
+                margin-right: 0.5rem;
+            }
+        }
+
+        .info-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            color: $white;
+
+            .each-info {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                margin-bottom: 1rem;
+
+                .text {
+                    font-family: Exo-Regular;
+                    width: 760px;
+                    text-align: justify;
+                }
+
+                .sub-title {
+                    font-family: Exo-SemiBold;
+                    //margin-bottom: 0.5rem;
+                }
+            }
+        }
+    }
+}

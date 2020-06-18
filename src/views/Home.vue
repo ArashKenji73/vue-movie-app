@@ -54,7 +54,7 @@ export default {
     ]),
 
     getUpComingMoviesLimit(){
-      return this.getUpComingMovies.slice(0, 4);
+      return this.getUpComingMovies.slice(0, 8);
     }
   },
   methods:{

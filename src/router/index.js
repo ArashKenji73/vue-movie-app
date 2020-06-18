@@ -2,6 +2,10 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '@/views/Home.vue';
 
+
+const SingleMovie = () => import('@/views/single-movie.vue');
+const SearchMovie = () => import('@/views/search-page.vue');
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -18,6 +22,20 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue'),
   },
+  {
+    path: '/movies/movie/:id',
+    component: SingleMovie,
+    props: true,
+  },
+
+  {
+    path: '/movies/search',
+    name: 'search',
+    component: SearchMovie,
+    props: true,
+  },
+
+
 ];
 
 const router = new VueRouter({

@@ -31,6 +31,7 @@ export default {
         prevNextButtons: true,
         pageDots: false,
         wrapAround: true,
+        draggable: false,
         cellAlign: 'left'
         // any options from Flickity can be used
       }
