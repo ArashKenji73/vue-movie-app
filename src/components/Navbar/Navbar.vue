@@ -7,9 +7,9 @@
       <router-link to="/movies" tag="li"><a>movies</a></router-link>
       <router-link to="/series" tag="li"><a>series</a></router-link>
       <router-link to="/actors" tag="li"><a>actors</a></router-link>
-      <li id="search-btn" @click="showSearch = !showSearch">
+      <li id="search-btn" @click="showSearch = !showSearch" >
         <a>search</a>
-        <AppSearch v-show="showSearch" />
+        <AppSearch v-show="showSearch" v-on:childToParent="changeStatus"/>
       </li>
     </nav>
 
@@ -26,6 +26,16 @@ export default {
   data(){
     return{
       showSearch: false,
+    }
+  },
+  methods:{
+    changeStatus(val){
+      this.showSearch = val
+    }
+  },
+  computed:{
+    showSearchStatus(){
+      return this.showSearch;
     }
   },
   components:{

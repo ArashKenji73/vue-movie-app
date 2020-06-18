@@ -23,8 +23,12 @@ export default {
       this.$router.push({
         name: 'search',
         query: { search: this.searchTerm }
-      })
+      });
       //console.log('go to search')
+      //fadeOut on search button clicked
+      this.$emit('childToParent',false)
+
+
     }
   },
 };
