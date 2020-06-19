@@ -5,6 +5,7 @@ import Home from '@/views/Home.vue';
 
 const SingleMovie = () => import('@/views/single-movie.vue');
 const SearchMovie = () => import('@/views/search-page.vue');
+const GenreMovie = () => import('@/views/genre-page.vue');
 
 Vue.use(VueRouter);
 
@@ -32,6 +33,12 @@ const routes = [
     path: '/movies/search',
     name: 'search',
     component: SearchMovie,
+    props: true,
+  },
+  {
+    path: '/movies/genre/:id',
+    name: 'genre',
+    component: GenreMovie,
     props: true,
   },
 

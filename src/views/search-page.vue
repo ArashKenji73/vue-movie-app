@@ -59,7 +59,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .finds {
   padding: 2rem 0.5rem;
 }

@@ -22,7 +22,9 @@
         <div class="each-info">
           <h3 class="sub-title">GENRES :</h3>
           <div class="chips-wrapper">
-            <div class="chip radius" v-for="(genre , i) in genres" :key="i">{{genre.name}}</div>
+            <div class="chip radius" v-for="(genre , i) in genres" :key="i">
+              <router-link :to="{ name: 'genre', params: { id: genre.id }}">{{genre.name}}</router-link>
+              </div>
           </div>
         </div>
 
