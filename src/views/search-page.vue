@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-if="result">
+  <div class="container" v-if="result != null">
     <h3 class="finds">Finds :{{total}} movies</h3>
     <div class="search-wrapper">
       <div class="search-item" v-for="(movie, i) in result" :key="i">
@@ -24,7 +24,7 @@ import AppLoading from "@/components/Loading";
 export default {
   data() {
     return {
-      result: [],
+      result: null,
       searchTerm: "",
       total: 0
     };

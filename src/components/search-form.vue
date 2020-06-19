@@ -1,6 +1,6 @@
 <template>
-  <form id="search-form" @click.stop="">
-    <input type="search" name="search" placeholder="type movie name or id"  v-model="searchTerm"/>
+  <form id="search-form" @click.stop>
+    <input type="search" name="search" placeholder="type movie name or id" v-model="searchTerm" />
     <button type="submit" @click.stop.prevent="goToSarchPage">
       <img src="@/assets/magnifying-glass.svg" />
     </button>
@@ -8,29 +8,31 @@
 </template>
 
 <script>
-
 export default {
-  data(){
-    return{
-      searchTerm: '',
-      result: [],
-    }
+  data() {
+    return {
+      searchTerm: "",
+      result: []
+    };
   },
-  methods:{
-    goToSarchPage(){
+  methods: {
+    goToSarchPage() {
       //redirect to search page
       //send search term to page
       this.$router.push({
-        name: 'search',
+        name: "search",
         query: { search: this.searchTerm }
       });
       //console.log('go to search')
       //fadeOut on search button clicked
-      this.$emit('childToParent',false)
-
-
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+      });
+      this.$emit("childToParent", false);
     }
-  },
+  }
 };
 </script>
 <style lang="scss">
@@ -48,7 +50,6 @@ export default {
   left: -202px;
   bottom: -72px;
   width: 270px;
-
 
   @media (min-width: 576px) {
     left: 0px;
