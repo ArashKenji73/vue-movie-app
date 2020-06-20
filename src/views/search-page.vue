@@ -5,12 +5,20 @@
       <div class="search-item" v-for="(movie, i) in result" :key="i">
         <singleMovie class="narrow" :movie="movie" />
       </div>
-
-      <!-- <singleMovie
-        v-for="(movie, i) in result" :key="i"
-        class="search-item"
-      :movie="movie"/>-->
     </div>
+    {{selectedPage}}
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#">Previous</a>
+      </li>
+      <li class="page-item" v-for="(page, i) in pages" :key="i">
+        <a class="page-link" @click="selectedPage = i">{{i}}</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+
   </div>
   <div v-else>
     <AppLoading />
@@ -26,17 +34,23 @@ export default {
     return {
       result: null,
       searchTerm: "",
-      total: 0
+      total: 0,
+      pages: 0,
+      selectedPage: 1,
     };
   },
   components: {
     singleMovie,
     AppLoading
   },
+
   watch: {
     $route(to, from) {
       //alert('called it');
       this.searchTerm = to.query.search;
+      this.getSearchRes();
+    },
+    selectedPage(){
       this.getSearchRes();
     }
   },
@@ -44,11 +58,13 @@ export default {
     getSearchRes() {
       axios
         .get(
-          `https://api.themoviedb.org/3/search/movie?api_key=${this.APP_API_KEY}&language=en-US&query=${this.searchTerm}&page=1`
+          `https://api.themoviedb.org/3/search/movie?api_key=${this.APP_API_KEY}&language=en-US&query=${this.searchTerm}&page=${this.selectedPage}`
         )
         .then(response => {
           this.result = response.data.results;
           this.total = response.data.total_results;
+          this.pages = response.data.total_pages;
+
         });
     }
   },
