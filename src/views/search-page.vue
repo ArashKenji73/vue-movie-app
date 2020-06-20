@@ -12,8 +12,8 @@
       margin-top: 3rem;"
     >{{selectedPage}}/{{pages}}</div>
     <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" href="#">Previous</a>
+      <li class="page-item" @click="previous">
+        <a class="page-link">Previous</a>
       </li>
       <li class="page-item-numb"
         v-for="(page, i) in paginationRange"
@@ -21,8 +21,8 @@
         :class="{ active: page == selectedPage }">
         <a class="page-link" @click="selectedPage = page">{{page}}</a>
       </li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
+      <li class="page-item" @click="next">
+        <a class="page-link">Next</a>
       </li>
     </ul>
 
@@ -45,6 +45,7 @@ export default {
       pages: 0,
       selectedPage: 1,
       range: 2,
+      test: 1
     };
   },
   components: {
@@ -67,7 +68,7 @@ export default {
         end = this.pages;
       }
 
-      if(this.pages = 1){
+      if(this.pages == 1){
         start = 1;
         end = 1
       }
@@ -104,7 +105,30 @@ export default {
           this.pages = response.data.total_pages;
 
         });
+    },
+    next(){
+      if(this.selectedPage<this.pages){
+        this.selectedPage++
+      }
+
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+      });
+    },
+    previous(){
+      if(this.selectedPage>1){
+        this.selectedPage--
+      }
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+      });
+
     }
+
   },
   created() {
 
