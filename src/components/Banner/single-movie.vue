@@ -58,11 +58,12 @@ export default {
 
     shortenTitle(){
       //return this.movie.title.length
-      if(this.movie != 'undefined' && this.movie.title.length > 18){
-        return this.movie.title.slice(0, 18)+'...';
-      }else if(this.movie != 'undefined'){
-        return this.movie.title
-      }
+      // if(this.movie != 'undefined' && this.movie.title.length > 18){
+      //   return this.movie.title.slice(0, 18)+'...';
+      // }else if(this.movie != 'undefined'){
+      //   return this.movie.title
+      // }
+      return this.movie.title
     },
     movieRate(){
       if(this.movie.vote_average >= 7){

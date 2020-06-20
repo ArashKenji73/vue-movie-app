@@ -6,13 +6,20 @@
         <singleMovie class="narrow" :movie="movie" />
       </div>
     </div>
-    {{selectedPage}}
+    <div style="
+      width: 100%;
+      text-align: center;
+      margin-top: 3rem;"
+    >{{selectedPage}}/{{pages}}</div>
     <ul class="pagination">
       <li class="page-item">
         <a class="page-link" href="#">Previous</a>
       </li>
-      <li class="page-item" v-for="(page, i) in pages" :key="i">
-        <a class="page-link" @click="selectedPage = i">{{i}}</a>
+      <li class="page-item-numb"
+        v-for="(page, i) in paginationRange"
+        :key="i"
+        :class="{ active: page == selectedPage }">
+        <a class="page-link" @click="selectedPage = page">{{page}}</a>
       </li>
       <li class="page-item">
         <a class="page-link" href="#">Next</a>
@@ -37,16 +44,42 @@ export default {
       total: 0,
       pages: 0,
       selectedPage: 1,
+      range: 2,
     };
   },
   components: {
     singleMovie,
     AppLoading
   },
+  computed:{
+    paginationRange(){
+      let array = [];
+      let start = this.selectedPage - this.range;
+      let end = this.selectedPage + this.range;
+
+      if(start <= 0){
+        start = 1
+        end = (this.range)*2 + 1;
+      }
+
+      if(end >= this.pages){
+        start = this.pages - ((this.range)*2);
+        end = this.pages;
+      }
+
+
+      for (let i = start; i <= end; i++) {
+        array.push(i)
+      }
+
+      return array
+    },
+  },
 
   watch: {
     $route(to, from) {
       //alert('called it');
+      this.selectedPage = 1,
       this.searchTerm = to.query.search;
       this.getSearchRes();
     },
@@ -69,6 +102,7 @@ export default {
     }
   },
   created() {
+
     this.searchTerm = this.$route.query.search;
     this.getSearchRes();
   }
@@ -95,4 +129,7 @@ export default {
     //background: olive;
   }
 }
+
+
+
 </style>

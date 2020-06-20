@@ -247,13 +247,37 @@ col-item{
     flex-wrap: wrap;
     justify-content: space-around;
     min-width: 200px;
-    max-width: 300px;
+    max-width: 360px;
     margin: 0 auto;
     margin-top: 2rem;
-    .page-item{
-        padding: 0.5rem;
-        background: $primaryColor;
+    .page-item-numb,.page-item{
+        border-radius: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        &.active{
+            a{
+                color: $white;
+            }
+            
+            background: $secondaryColor !important;
+        }
+    }
+    .page-item-numb{
+        border: 1px solid #dee2e6;
+        width: 40px;
+        height: 40px;
         a{
+            padding: 0.5rem;
+            color: $primaryColor;
+        }
+    }
+    .page-item{
+        cursor: pointer;
+        background: darken($primaryColor, 15);
+        a{
+            padding: 0.5rem;
             color: $white;
         }
        
