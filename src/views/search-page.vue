@@ -67,6 +67,11 @@ export default {
         end = this.pages;
       }
 
+      if(this.pages = 1){
+        start = 1;
+        end = 1
+      }
+
 
       for (let i = start; i <= end; i++) {
         array.push(i)
